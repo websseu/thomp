@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { platforms } from "@/constant/korea";
 import { getYesterday } from "@/utils/date";
@@ -8,11 +8,20 @@ import { FaYoutube } from "react-icons/fa";
 import { IoCalendarOutline } from "react-icons/io5";
 import { useYouTubePlayer } from "@/context/YouTubePlayerContext";
 import { CgPlayButtonO } from "react-icons/cg";
+import clsx from "clsx";
+
+interface RankingData {
+  ranking: number;
+  youtubeID: string;
+  image: string;
+  title: string;
+  artist: string;
+}
 
 export default function KoreaPage() {
   const [platform, setPlatform] = useState<string>("apple");
   const [date, setDate] = useState<string>(() => getYesterday());
-  const [rankingData, setRankingData] = useState<any[]>([]);
+  const [rankingData, setRankingData] = useState<RankingData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,9 +40,8 @@ export default function KoreaPage() {
     localStorage.setItem("selectedPlatform", selectedPlatform); // 즉시 저장
   };
 
-  const fetchRankingData = async () => {
+  const fetchRankingData = useCallback(async () => {
     if (!platform || !date) return;
-
     setIsLoading(true);
     setError(null);
 
@@ -44,17 +52,18 @@ export default function KoreaPage() {
       if (!response.ok) throw new Error("데이터를 가져오지 못했습니다.!");
       const data = await response.json();
       setRankingData(data);
-    } catch (error) {
-      console.error("데이터 에러 발생", error);
+    } catch (err) {
+      console.error("데이터 에러 발생", err);
       setRankingData([]);
+      setError((err as Error).message);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [platform, date]);
 
   useEffect(() => {
     fetchRankingData();
-  }, [platform, date]);
+  }, [fetchRankingData]);
 
   const selectedPlatformLabel = platforms.find(
     (item) => item.id === platform
@@ -79,9 +88,10 @@ export default function KoreaPage() {
             key={item.id}
             data-platform={item.id}
             onClick={() => handlePlatformClick(item.id)}
-            className={`music__platform ${
-              platform === item.id ? "bg-blue-100 border-blue-700" : ""
-            }`}
+            className={clsx(
+              "music__platform",
+              platform === item.id && "bg-blue-100 border-blue-700"
+            )}
           >
             <Image
               src={item.icon}
@@ -115,7 +125,8 @@ export default function KoreaPage() {
               ref={dateInputRef}
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="absolute top-0 left-0 w-full h-full opacity-0"
+              className="absolute top-0 left-0 w-full h-full hidden"
+              aria-hidden="true"
             />
           </div>
         </div>
@@ -157,6 +168,7 @@ export default function KoreaPage() {
                     width={40}
                     height={40}
                     className="rounded-md"
+                    priority
                   />
                   <div>
                     <p className="text-xs md:text-sm font-semibold text-gray-700">
@@ -177,9 +189,6 @@ export default function KoreaPage() {
                         }`}
                       />
                     </span>
-                    {/* <span className="music__icon group-hover:border-blue-500">
-                      <MdStars size={14} />
-                    </span> */}
                   </div>
                 </li>
               ))}
