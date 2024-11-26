@@ -1,0 +1,99 @@
+@import url("https://websseu.github.io/fffont/fonts/NanumSquareNeo/NanumSquareNeo.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #f8f7f1;
+}
+.NanumSquareNeo {
+  font-family: "NanumSquareNeo";
+}
+.poppins {
+  font-family: "Poppins";
+}
+
+@layer components {
+  .header__container {
+    @apply w-full border-b-2 border-black bg-[#f8f7f1];
+  }
+  .header__title {
+    @apply flex items-center justify-center sm:justify-between px-2 md:px-4 py-0 md:py-2 relative z-10 pb-1;
+  }
+  .header__title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: #00000038;
+    z-index: -1;
+  }
+  .header__title .left {
+    @apply w-9 h-9 rounded-full items-center justify-center ring ring-gray-300/20 hover:bg-blue-50 bg-[#f8f7f1] sm:flex hidden cursor-pointer;
+  }
+  .header__title .right {
+    @apply w-9 h-9 rounded-full items-center justify-center ring ring-gray-300/20 hover:bg-blue-50 bg-[#f8f7f1] sm:flex hidden cursor-pointer;
+  }
+  .header__title .center a {
+    @apply flex items-center uppercase poppins font-black bg-[#f8f7f1] px-4 text-4xl sm:text-6xl md:text-8xl;
+  }
+  .header__title .center a span:first-child {
+    @apply mr-[-0.5vw] inline-block;
+  }
+  .header__title .center a span:last-child {
+    @apply ml-[-0.5vw] inline-block;
+  }
+  .header__title .center a svg {
+    @apply hover:text-blue-600 transition-colors duration-500;
+  }
+  .header__nav {
+    @apply absolute md:bottom-auto bottom-0 w-full md:top-[98px] z-50;
+  }
+  .header__nav ul {
+    @apply flex md:justify-center justify-evenly bg-slate-400/20 backdrop-blur-sm md:bg-transparent md:backdrop-blur-0;
+  }
+  .header__nav ul li a {
+    @apply md:bg-[#f8f7f1] md:py-0 py-3 bg-transparent px-2 poppins text-sm inline-block;
+  }
+  .header__nav ul li:first-child a {
+    @apply pl-6;
+  }
+  .header__nav ul li:last-child a {
+    @apply pr-6;
+  }
+  .main {
+    @apply max-w-screen-xl mx-auto md:mt-[60px] sm:mt-[90px] mt-[70px] px-4;
+  }
+  .footer__inner {
+    @apply mx-auto max-w-7xl p-4 mt-20;
+  }
+  .music__platforms {
+    @apply flex flex-wrap items-center justify-center gap-2 NanumSquareNeo;
+  }
+  .music__platform {
+    @apply flex items-center text-xs gap-2 text-gray-600 border px-2 py-1 rounded-md cursor-pointer;
+  }
+  .music__list {
+    @apply NanumSquareNeo;
+  }
+  .music__title {
+    @apply mt-6 NanumSquareNeo mb-1 flex items-center justify-between;
+  }
+  .music__title h2 {
+    @apply uppercase pb-1 text-sm font-bold text-slate-700;
+  }
+  .music__ranking ul {
+    @apply border-t border-black;
+  }
+  .music__ranking ul li {
+    @apply flex items-center border-b border-dashed py-2 pr-2 gap-4 hover:bg-slate-200;
+  }
+  .music__icon {
+    @apply w-8 h-8 rounded-full border flex items-center justify-center text-gray-800;
+  }
+}
