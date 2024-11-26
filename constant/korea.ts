@@ -1,4 +1,11 @@
-export const platforms = [
+export type MusicPlatform = {
+  id: string;
+  label: string;
+  icon: string;
+  site: string;
+};
+
+export const platforms: MusicPlatform[] = [
   {
     id: "apple",
     label: "애플 뮤직",

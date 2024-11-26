@@ -96,4 +96,16 @@ html {
   .music__icon {
     @apply w-8 h-8 rounded-full border flex items-center justify-center text-gray-800;
   }
+  .appleCountry {
+    @apply flex flex-wrap gap-1;
+  }
+  .appleCountry__icon {
+    @apply border rounded-full w-7 h-7 flex items-center justify-center cursor-pointer;
+  }
+  .apple__title {
+    @apply mt-6 NanumSquareNeo mb-0 md:mb-1 flex items-center gap-2 relative border-b border-black pb-1;
+  }
+  .apple__icon {
+    @apply absolute right-2 top-1/2 transform -translate-y-1/2 border px-2 py-1 rounded-md flex items-center justify-center;
+  }
 }
