@@ -10,7 +10,7 @@ const YouTubePlayer: React.FC = () => {
   if (!videoId) return null;
 
   return (
-    <div className="fixed z-50 bottom-[54px] right-[10px] md:bottom-4 md:right-4 md:w-[400px] w-[200px] md:h-[225px] h-[112px] bg-black rounded-md overflow-hidden shadow-lg group">
+    <div className="fixed z-50 bottom-[54px] right-[10px] md:bottom-4 md:right-4 md:w-[400px] md:h-[225px] w-[300px] h-[169px] bg-black rounded-md overflow-hidden shadow-lg group">
       <button
         onClick={() => setVideoId(null)}
         className="absolute top-2 right-2 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity"

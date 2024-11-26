@@ -155,7 +155,7 @@ export default function KoreaPage() {
                       : ""
                   }`}
                 >
-                  <span className="w-6 md:w-10 text-sm flex items-center justify-center poppins">
+                  <span className="w-6 md:w-10 text-sm text-[#6E6E6E] flex items-center justify-center poppins">
                     {videoId === item.youtubeID ? (
                       <CgPlayButtonO size={20} />
                     ) : (
@@ -174,7 +174,7 @@ export default function KoreaPage() {
                     <p className="text-xs md:text-sm font-semibold text-gray-700">
                       {item.title}
                     </p>
-                    <p className="text-xs text-gray-500">{item.artist}</p>
+                    <p className="text-xs text-[#6E6E6E]">{item.artist}</p>
                   </div>
                   <div className="ml-auto flex gap-1">
                     <span
