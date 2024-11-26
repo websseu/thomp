@@ -20,7 +20,7 @@ html {
     @apply w-full border-b-2 border-black bg-[#f8f7f1];
   }
   .header__title {
-    @apply flex items-center justify-center sm:justify-between px-2 md:px-4 py-0 md:py-2 relative z-10 pb-1;
+    @apply flex items-center justify-center sm:justify-between px-2 md:px-4 py-0 md:py-2 relative z-10 pb-0 sm:pb-1;
   }
   .header__title::after {
     content: "";
@@ -52,10 +52,10 @@ html {
     @apply hover:text-blue-600 transition-colors duration-500;
   }
   .header__nav {
-    @apply absolute md:bottom-auto bottom-0 w-full md:top-[98px] z-50;
+    @apply fixed md:absolute md:bottom-auto bottom-0 w-full md:top-[98px] z-50;
   }
   .header__nav ul {
-    @apply flex md:justify-center justify-evenly bg-slate-400/20 backdrop-blur-sm md:bg-transparent md:backdrop-blur-0;
+    @apply flex md:justify-center justify-evenly bg-slate-900/20 backdrop-blur-md md:bg-transparent md:backdrop-blur-0;
   }
   .header__nav ul li a {
     @apply md:bg-[#f8f7f1] md:py-0 py-3 bg-transparent px-2 poppins text-sm inline-block;
@@ -67,7 +67,7 @@ html {
     @apply pr-6;
   }
   .main {
-    @apply max-w-screen-xl mx-auto md:mt-[60px] sm:mt-[90px] mt-[70px] px-4;
+    @apply max-w-screen-xl mx-auto md:mt-[60px] sm:mt-[30px] mt-[30px] px-4;
   }
   .footer__inner {
     @apply mx-auto max-w-7xl p-4 mt-20;
@@ -76,22 +76,22 @@ html {
     @apply flex flex-wrap items-center justify-center gap-2 NanumSquareNeo;
   }
   .music__platform {
-    @apply flex items-center text-xs gap-2 text-gray-600 border px-2 py-1 rounded-md cursor-pointer;
+    @apply flex items-center text-xs gap-2 text-gray-600 border px-1 py-1 rounded-md cursor-pointer;
   }
   .music__list {
     @apply NanumSquareNeo;
   }
   .music__title {
-    @apply mt-6 NanumSquareNeo mb-1 flex items-center justify-between;
+    @apply mt-6 NanumSquareNeo mb-0 md:mb-1 flex items-center justify-between;
   }
   .music__title h2 {
-    @apply uppercase pb-1 text-sm font-bold text-slate-700;
+    @apply uppercase text-xs sm:text-sm font-bold text-slate-600;
   }
   .music__ranking ul {
     @apply border-t border-black;
   }
   .music__ranking ul li {
-    @apply flex items-center border-b border-dashed py-2 pr-2 gap-4 hover:bg-slate-200;
+    @apply flex items-center border-b border-dashed py-2 pr-2 gap-2 hover:bg-slate-200;
   }
   .music__icon {
     @apply w-8 h-8 rounded-full border flex items-center justify-center text-gray-800;

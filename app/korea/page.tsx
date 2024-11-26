@@ -90,7 +90,7 @@ export default function KoreaPage() {
               height={20}
               className="rounded-md"
             />
-            {item.label}
+            <span className="hidden md:block">{item.label}</span>
           </span>
         ))}
       </div>
@@ -144,7 +144,7 @@ export default function KoreaPage() {
                       : ""
                   }`}
                 >
-                  <span className="w-10 flex items-center justify-center poppins">
+                  <span className="w-6 md:w-10 text-sm flex items-center justify-center poppins">
                     {videoId === item.youtubeID ? (
                       <CgPlayButtonO size={20} />
                     ) : (
@@ -159,7 +159,7 @@ export default function KoreaPage() {
                     className="rounded-md"
                   />
                   <div>
-                    <p className="text-sm font-semibold text-gray-700">
+                    <p className="text-xs md:text-sm font-semibold text-gray-700">
                       {item.title}
                     </p>
                     <p className="text-xs text-gray-500">{item.artist}</p>
